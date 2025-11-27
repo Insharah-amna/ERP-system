@@ -1,0 +1,37 @@
+import { Input } from '../ui/input';
+
+const CustomInput = ({
+  id,
+  label ='',
+  type = 'text',
+  placeholder = '',
+  value,
+  onChange,
+  className = '',
+  alertMessage
+}) => {
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="text-sm text-gray-700 ml-1">
+        {label}
+      </label>
+
+      <Input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={`${className}`}
+      />
+
+      {
+        alertMessage && (
+          <p className="text-sm text-red-500 ml-1">{'Please fill all fields'}</p>
+        )
+      }
+    </div>
+  );
+};
+
+export default CustomInput;
