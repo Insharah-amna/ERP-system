@@ -5,8 +5,8 @@ import ResetPassword from '@/components/log/ResetPassword';
 export default function Home() {
   return (
     <div>
-      {/* <Login /> */}
-      {/* <ForgotPassword /> */}
+      <Login />
+      <ForgotPassword />
       <ResetPassword />
     </div>
   );
