@@ -40,14 +40,15 @@ export class AuthService {
     return { message: `Mail sent successfully` };
   }
 
-  async resetPassword(email: string, newPassword: string) {
+  async resetPassword(email: string, password: string) {
     const user = await this.usersService.getSingleUser(email);
+
     if (!user) {
       return { message: 'User not found' };
     }
 
-    user.password = newPassword;
-    await this.usersService.updateUser(user.email, newPassword, user.id);
+    user.password = password;
+    await this.usersService.updateUser(user.email, password);
 
     return { message: 'Password successfully reset.' };
   }

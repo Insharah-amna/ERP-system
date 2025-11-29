@@ -18,8 +18,8 @@ export class AuthController {
   @Post('reset-password/:email')
   resetPassword(
     @Param('email') email: string,
-    @Body('newPassword') newPassword: string,
+    @Body('password') password: string,
   ) {
-    return this.authService.resetPassword(email, newPassword);
+    return this.authService.resetPassword(email, password);
   }
 }

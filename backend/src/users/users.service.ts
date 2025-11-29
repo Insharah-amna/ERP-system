@@ -27,8 +27,8 @@ export class UsersService {
     return { message: 'User added successfully', user: newUser };
   }
 
-  async updateUser(email: string, password: string, id: number) {
-    const user = await this.usersRepository.findOneBy({ id });
+  async updateUser(email: string, password: string) {
+    const user = await this.usersRepository.findOneBy({ email });
     if (!user) {
       return { message: 'User not found' };
     }
@@ -38,13 +38,13 @@ export class UsersService {
     return { message: 'User info updated successfully', user };
   }
 
-  async deleteUser(id: number) {
-    const user = await this.usersRepository.findOneBy({ id });
+  async deleteUser(email: string) {
+    const user = await this.usersRepository.findOneBy({ email });
     if (!user) {
       return { message: 'User not found' };
     }
 
-    await this.usersRepository.delete(id);
-    return { message: `User with id ${id} is deleted successfully.` };
+    await this.usersRepository.delete(email);
+    return { message: `User with email ${email} is deleted successfully.` };
   }
 }

@@ -31,17 +31,16 @@ export class UsersController {
     return this.usersService.addUser(email, password, role);
   }
 
-  @Put(':id')
+  @Put(':email')
   updateUser(
-    @Param('id') id: string,
-    @Body('username') username: string,
+    @Param('email') email: string,
     @Body('password') password: string,
   ) {
-    return this.usersService.updateUser(username, password, +id);
+    return this.usersService.updateUser(password, email);
   }
 
-  @Delete(':id')
-  deleteUser(@Param('id') id: string) {
-    return this.usersService.deleteUser(+id);
+  @Delete(':email')
+  deleteUser(@Param('email') email: string) {
+    return this.usersService.deleteUser(email);
   }
 }
