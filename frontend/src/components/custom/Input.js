@@ -8,7 +8,7 @@ const CustomInput = ({
   value,
   onChange,
   className = '',
-  alertMessage
+  alerts
 }) => {
   return (
     <div className="flex flex-col gap-2">
@@ -26,8 +26,8 @@ const CustomInput = ({
       />
 
       {
-        alertMessage && (
-          <p className="text-sm text-red-500 ml-1">{'Please fill all fields'}</p>
+        alerts.show && (
+          <p className="text-sm text-red-500 ml-1">{alerts.msg}</p>
         )
       }
     </div>

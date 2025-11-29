@@ -5,29 +5,30 @@ import CustomButton from '@/components/custom/Button';
 import CustomInput from '@/components/custom/Input';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [alertmsg, setAlertmsg] = useState(false);
+  const [alerts, setalerts] = useState({
+    show: false,
+    msg: "",
+  });
 
-  const onLogin = async (e) => {
-    if(username === '' || password === ''){
-      setAlertmsg(true);
-      e.preventDefault();
+  const onLogin = async () => {
+    if(!email|| !password){
+      setalerts({ show: true, msg: "Please fill all fields." });
       return;
     }
 
-    try {
-
-      const res = await fetch('http://localhost:3001/auth/login', {
-        method: "POST",
+    const res = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      // body: JSON.stringify({ email, password }),
-    })
+      body: JSON.stringify({ email, password }), 
+    });
+
     const data = await res.json();
-    console.log(data);
-    } catch (e) {
-      console.log(e)
-  }
+    
+    if (data.user) {
+      alert('Omedetou! You have logged in successfully')
+    }
   }
 
   return (
@@ -37,12 +38,12 @@ const Login = () => {
 
         <CustomInput
           id="username"
-          label="Username"
-          placeholder="Username"
+          label="User ID"
+          placeholder="User ID"
           className="rounded-full"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          alertMessage={alertmsg}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          alerts={alerts}
         />
 
         <CustomInput
@@ -53,17 +54,17 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          alertMessage={alertmsg}
+          alerts={alerts}
         />
 
         <div className="flex flex-col gap-2 items-center justify-center mt-1">
           <CustomButton
             buttonText="Log In"
             className="rounded-full w-[40%] h-10"
-            onClick={onLogin} 
+            onClick={onLogin}
           />
 
-          <Link href="/forgot-password" className="text-[14px] text-gray-600 hover:underline">
+          <Link href="/auth/forgot-password" className="text-[14px] text-gray-600 hover:underline">
             Reset Password
           </Link>
         </div>
