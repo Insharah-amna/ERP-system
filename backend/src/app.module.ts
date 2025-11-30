@@ -4,6 +4,12 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { StudentsModule } from './students/students.module';
+import { TeachersModule } from './teachers/teachers.module';
+import { CoursesModule } from './courses/courses.module';
+import { DepartmentsModule } from './departments/departments.module';
+import { EnrollmentModule } from './enrollment/enrollment.module';
+import { CourseAssignmentsModule } from './course_assignments/course_assignments.module';
 
 @Module({
   imports: [
@@ -19,6 +25,12 @@ import { AuthModule } from './auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    StudentsModule,
+    TeachersModule,
+    CoursesModule,
+    DepartmentsModule,
+    EnrollmentModule,
+    CourseAssignmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

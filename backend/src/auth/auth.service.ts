@@ -20,7 +20,7 @@ export class AuthService {
     return {
       message: 'Login successful',
       user: {
-        id: user.id,
+        id: user.userId,
         email: user.email,
         role: user.role,
       },

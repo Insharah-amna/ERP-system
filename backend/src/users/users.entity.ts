@@ -10,7 +10,7 @@ import { UserRole } from 'src/utilities/general';
 @Entity('users')
 export class Users {
   @PrimaryGeneratedColumn()
-  id: number;
+  userId: number;
 
   @Column({ unique: true })
   email: string;
