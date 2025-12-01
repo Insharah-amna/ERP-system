@@ -8,7 +8,7 @@ const CustomInput = ({
   value,
   onChange,
   className = '',
-  alerts
+  alerts = { show: false, msg: '' }
 }) => {
   return (
     <div className="flex flex-col gap-2">

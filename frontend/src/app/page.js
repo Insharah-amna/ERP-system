@@ -1,9 +1,6 @@
 import React from 'react'
+import Home from '@/components/home'
 
 export default function Page() {
-  return (
-    <div>
-      <a href="/auth/login">Go to Login page</a>
-    </div>
-  );
+  return <Home />
 }

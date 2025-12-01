@@ -116,7 +116,39 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+  background: #00786f;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 12px !important;
+  border: #fff 1px solid !important;
+  border-radius: 50%;
+  /* font-size: 6px !important; */
+}
+
+/* remove default arrow */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  width: 45px !important;
+  height: 45px !important;
+  transition: all 180ms ease-in-out;
+  /* or set to 0 to hide */
+}
+
+.swiper-button-next {
+  right: 20px !important;
+  /* move forward button */
+}
+
+.swiper-button-prev {
+  left: 20px !important;
+  /* move back button */
 }
