@@ -1,9 +1,14 @@
 import CustomInput from "../custom/Input"
 import { CustomDialog } from "../custom/dialog/Dialog"
 import { CustomTable } from "../custom/tables"
-import { dummyTableRows, studentHeaderItems } from "@/constants/adminDashboard"
+import { studentHeaderItems } from "@/constants/adminDashboard"
+import { TableCell, TableRow } from "../ui/table"
+import StudentRow from "../custom/tables/StudentRow"
 
-const Students = () => {  
+const Students = async () => {
+  let data = await fetch('http://localhost:3001/students');
+  data = await data.json();
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between">
@@ -28,8 +33,29 @@ const Students = () => {
 
       <div className="px-4">
         <CustomTable
-          headerItems={studentHeaderItems}
-          rowData={dummyTableRows}
+          tableHeaders={studentHeaderItems}
+          tableBody={
+            <>
+              {data.map((student) => (
+                <StudentRow
+                  key={student.studentId} 
+                  student={student}
+                  // handleEditClick={() => handleEditClick(student)}
+                  // handleDelete={() => handleDelete(student)}
+                />
+              ))}
+              {data.length === 0 && (
+                <TableRow>
+                  <TableCell
+                    colSpan={5}
+                    className='text-center py-4 text-gray-500'
+                  >
+                    No departments yet.
+                  </TableCell>
+                </TableRow>
+              )}
+            </>
+          }
         />
       </div>
     </div>

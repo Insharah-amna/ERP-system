@@ -1,9 +1,15 @@
 import CustomInput from "../custom/Input"
 import { CustomDialog } from "../custom/dialog/Dialog"
 import { CustomTable } from "../custom/tables"
-import { deptHeaderItems, dummyTableRows } from "@/constants/adminDashboard"
+import { deptHeaderItems } from "@/constants/adminDashboard"
+import { TableCell, TableRow } from "../ui/table"
+import DeptRow from "../custom/tables/DeptRow"
+import DepartmentsApi from "@/services/DepartmentsApi"
 
-const Departments = () => {  
+const Departments = () => {
+  const data = DepartmentsApi();
+  console.log(data)
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between">
@@ -23,8 +29,29 @@ const Departments = () => {
 
       <div className="px-4">
         <CustomTable
-          headerItems={deptHeaderItems}
-          rowData={dummyTableRows}
+          tableHeaders={deptHeaderItems}
+          tableBody={
+            <>
+              {data.map((dept) => (
+                <DeptRow
+                  key={dept.departmentId} 
+                  dept={dept}
+                  // handleEditClick={() => handleEditClick(dept)}
+                  // handleDelete={() => handleDelete(dept)}
+                />
+              ))}
+              {data.length === 0 && (
+                <TableRow>
+                  <TableCell
+                    colSpan={2}
+                    className='text-center py-4 text-gray-500'
+                  >
+                    No departments yet.
+                  </TableCell>
+                </TableRow>
+              )}
+            </>
+          }
         />
       </div>
     </div>
