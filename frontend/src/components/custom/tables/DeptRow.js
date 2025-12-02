@@ -3,8 +3,10 @@ import {TableCell, TableRow} from '@/components/ui/table';
 
 const DeptRow = ({
   dept,
-  handleEditClick,
+  setSelectedId,
+  setIsEdit,
   handleDelete,
+  setDialogOpen
 }) => {
   return (
     <TableRow key={dept.departmentId} className='border-b border-gray-200 '>
@@ -13,10 +15,14 @@ const DeptRow = ({
       <TableCell className='p-3 capitalize'>{dept.departmentHead}</TableCell>
       <TableCell className='p-3 text-center flex items-center'>
         <FiEdit
-          className='text-blue-600 w-12 text-lg'
-          onClick={handleEditClick}
+          className='text-blue-600 w-8 text-lg cursor-pointer'
+          onClick={() => {
+            setIsEdit(true);
+            setSelectedId(dept.departmentId);
+            setDialogOpen(true);
+          }}
         />
-        <FiTrash className='text-red-600 w-12 text-lg' onClick={handleDelete} />
+        <FiTrash className='text-red-600 w-8 text-lg cursor-pointer' onClick={handleDelete} />
       </TableCell>
     </TableRow>
   );

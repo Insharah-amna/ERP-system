@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { AdminSidebar } from "@/components/custom/Sidebar";
 
 import getDate from "@/services/getDate"
@@ -26,7 +26,7 @@ export default function Page() {
   const date = getDate();
 
   return (
-    <SidebarProvider>
+    <>
       <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex flex-col w-full bg-neutral-100">
@@ -49,6 +49,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-    </SidebarProvider>
+    </>
   );
 }

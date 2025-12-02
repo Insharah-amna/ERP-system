@@ -1,3 +1,5 @@
+'use client'
+import { useEffect, useState } from "react"
 import CustomInput from "../custom/Input"
 import { CustomDialog } from "../custom/dialog/Dialog"
 import { CustomTable } from "../custom/tables"
@@ -5,9 +7,17 @@ import { teacherHeaderItems } from "@/constants/adminDashboard"
 import { TableCell, TableRow } from "../ui/table"
 import TeacherRow from "../custom/tables/TeacherRow"
 
-const Teachers = async () => {
-  let data = await fetch('http://localhost:3001/teachers');
-  data = await data.json();
+const Teachers = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function load() {
+      const res = await fetch('http://localhost:3001/teachers');
+      const json = await res.json();
+      setData(json);
+    }
+    load();
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">

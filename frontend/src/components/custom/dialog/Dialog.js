@@ -12,10 +12,13 @@ import CustomButton from "../Button"
 export function CustomDialog({
   buttonText = 'Open Dialog',
   dialogTitle = 'Dialog Title',
+  isOpen,
+  setIsOpen,
   fields,
+  onSave
 }) {
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <form>
         <DialogTrigger asChild>
           <CustomButton
@@ -36,13 +39,16 @@ export function CustomDialog({
               <CustomButton
                 buttonText={'Cancel'}
                 variant="outline"
-                className={'w-1/2'} />
+                className={'w-1/2'}
+              />
             </DialogClose>
 
             <CustomButton
               buttonText={'Save'}
               type="submit"
-              className={'hover:bg-teal-700 w-1/2'} />
+              className={'hover:bg-teal-700 w-1/2'}
+              onClick={onSave}
+            />
           </DialogFooter>
         </DialogContent>
       </form>

@@ -1,4 +1,4 @@
-import {FiEdit, FiTrash} from 'react-icons/fi';
+import {FiEdit, FiEye, FiTrash} from 'react-icons/fi';
 import {TableCell, TableRow} from '@/components/ui/table';
 
 const StudentRow = ({
@@ -16,10 +16,17 @@ const StudentRow = ({
       <TableCell className='p-3 capitalize'>{student.department}</TableCell>
       <TableCell className='p-3 flex items-center'>
         <FiEdit
-          className='text-blue-600 w-12 text-lg'
+          className='text-blue-600 w-12 text-lg cursor-pointer'
           onClick={handleEditClick}
         />
-        <FiTrash className='text-red-600 w-12 text-lg' onClick={handleDelete} />
+        <FiEye
+          className='text-gray-600 h-7 text-lg cursor-pointer'
+          onClick={() => {
+            // setSelectedProduct(product);
+            // setIsInfoOpen(true);
+          }}
+        />
+        <FiTrash className='text-red-600 w-12 text-lg cursor-pointer' onClick={handleDelete} />
       </TableCell>
     </TableRow>
   );
