@@ -1,10 +1,12 @@
-import {FiEdit, FiEye, FiTrash} from 'react-icons/fi';
+import {FiEdit, FiTrash} from 'react-icons/fi';
 import {TableCell, TableRow} from '@/components/ui/table';
 
 const StudentRow = ({
   student,
-  handleEditClick,
-  handleDelete,
+  setIsEdit,
+  setSelectedId,
+  setDialogOpen,
+  setDeleteOpen,
 }) => {
   return (
     <TableRow key={student.studentId} className='border-b border-gray-200'>
@@ -13,20 +15,23 @@ const StudentRow = ({
       <TableCell className='p-3 capitalize'>{student.email}</TableCell>
       <TableCell className='p-3 capitalize'>{student.rollNumber}</TableCell>
       <TableCell className='p-3 capitalize'>{student.semester}</TableCell>
-      <TableCell className='p-3 capitalize'>{student.department}</TableCell>
+      <TableCell className='p-3 capitalize'>{student.department.departmentName}</TableCell>
       <TableCell className='p-3 flex items-center'>
         <FiEdit
-          className='text-blue-600 w-12 text-lg cursor-pointer'
-          onClick={handleEditClick}
-        />
-        <FiEye
-          className='text-gray-600 h-7 text-lg cursor-pointer'
+          className='text-blue-600 w-8 text-lg cursor-pointer'
           onClick={() => {
-            // setSelectedProduct(product);
-            // setIsInfoOpen(true);
+            setIsEdit(true);
+            setSelectedId(student.studentId);
+            setDialogOpen(true);
           }}
         />
-        <FiTrash className='text-red-600 w-12 text-lg cursor-pointer' onClick={handleDelete} />
+        <FiTrash
+          className='text-red-600 w-8 text-lg cursor-pointer'
+          onClick={() => {
+            setSelectedId(student.studentId);
+            setDeleteOpen(true);
+          }}
+        />
       </TableCell>
     </TableRow>
   );

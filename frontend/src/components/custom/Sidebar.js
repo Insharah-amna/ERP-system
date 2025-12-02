@@ -44,7 +44,7 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
 
           <CustomButton
             buttonText={'Sign Out'}
-            className={'m-2 h-7 rounded-xs text-xs font-light bg-red-400'}
+            className={'m-2 h-[30px] rounded-xs text-xs font-light bg-red-400'}
           />
         </div>
       </SidebarContent>

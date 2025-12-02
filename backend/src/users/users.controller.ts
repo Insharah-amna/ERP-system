@@ -53,8 +53,8 @@ export class UsersController {
     return this.usersService.updateUser(password, email);
   }
 
-  @Delete(':email')
-  deleteUser(@Param('email') email: string) {
-    return this.usersService.deleteUser(email);
+  @Delete(':id')
+  deleteUser(@Param('id') id: number) {
+    return this.usersService.deleteUser(id);
   }
 }

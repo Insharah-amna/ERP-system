@@ -1,6 +1,5 @@
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -10,48 +9,41 @@ import {
 import CustomButton from "../Button"
 
 export function CustomDialog({
-  buttonText = 'Open Dialog',
   dialogTitle = 'Dialog Title',
   isOpen,
   setIsOpen,
   fields,
-  onSave
+  onSave,
+  onClose,
+  isDelete = false
 }) {
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <form>
-        <DialogTrigger asChild>
-          <CustomButton
-            buttonText={buttonText}
-            className={'bg-teal-600 rounded-sm'}
-          />
-        </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>{dialogTitle}</DialogTitle>
+        </DialogHeader>
 
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{ dialogTitle }</DialogTitle>
-          </DialogHeader>
+        {fields}
 
-          {fields}
-
-          <DialogFooter className={'mt-4'}>
-            <DialogClose asChild>
-              <CustomButton
-                buttonText={'Cancel'}
-                variant="outline"
-                className={'w-1/2'}
-              />
-            </DialogClose>
-
+        <DialogFooter className="mt-4">
+          <DialogClose asChild>
             <CustomButton
-              buttonText={'Save'}
-              type="submit"
-              className={'hover:bg-teal-700 w-1/2'}
-              onClick={onSave}
+              buttonText={'Cancel'}
+              variant="outline"
+              className="w-1/2"
+              onClick={onClose}
             />
-          </DialogFooter>
-        </DialogContent>
-      </form>
+          </DialogClose>
+
+          <CustomButton
+            buttonText={isDelete ? 'Delete' : 'Save'}
+            className={`w-1/2 ${isDelete ? 'hover:bg-red-400' : 'hover:bg-teal-700'}`}
+            onClick={onSave}
+          />
+        </DialogFooter>
+      </DialogContent>
     </Dialog>
   )
 }

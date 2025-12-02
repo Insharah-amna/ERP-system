@@ -7,6 +7,7 @@ const CustomInput = ({
   placeholder = '',
   value,
   onChange,
+  defaultValue = '',
   className = '',
   alerts = { show: false, msg: '' }
 }) => {
@@ -23,6 +24,7 @@ const CustomInput = ({
         value={value}
         onChange={onChange}
         className={`${className}`}
+        defaultValue={defaultValue}
       />
 
       {

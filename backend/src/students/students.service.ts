@@ -49,12 +49,17 @@ export class StudentsService {
   }
 
   async findAll() {
-    const students = await this.studentRepository.find();
+    const students = await this.studentRepository.find({
+      relations: ['department', 'user'],
+    });
     return students;
   }
 
   async findOne(id: number) {
-    return await this.studentRepository.findOne({ where: { studentId: id } });
+    return await this.studentRepository.findOne({
+      where: { studentId: id },
+      relations: ['department', 'user'],
+    });
   }
 
   async update(id: number, updatedData: Partial<Student>) {

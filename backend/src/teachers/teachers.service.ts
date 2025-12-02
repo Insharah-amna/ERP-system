@@ -45,12 +45,17 @@ export class TeachersService {
   }
 
   async findAll() {
-    const teachers = await this.teacherRepository.find();
+    const teachers = await this.teacherRepository.find({
+      relations: ['department', 'user'],
+    });
     return teachers;
   }
 
   async findOne(id: number) {
-    return await this.teacherRepository.findOne({ where: { teacherId: id } });
+    return await this.teacherRepository.findOne({
+      where: { teacherId: id },
+      relations: ['department', 'user'],
+    });
   }
 
   async update(id: number, updatedData: Partial<Teachers>) {
