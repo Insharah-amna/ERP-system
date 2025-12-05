@@ -43,7 +43,11 @@ export class EnrollmentService {
   async getStudentCourses(studentId: number) {
     return await this.enrollmentRepository.find({
       where: { student: { studentId } },
-      relations: ['course'],
+      relations: [
+        'course',
+        'course.courseAssignments',
+        'course.courseAssignments.teacher',
+      ],
     });
   }
 

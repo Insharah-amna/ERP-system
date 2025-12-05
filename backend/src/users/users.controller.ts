@@ -23,26 +23,8 @@ export class UsersController {
   }
 
   @Post()
-  addUser(
-    @Body('email') email: string,
-    @Body('role') role: string,
-    // @Body('password') password: string,
-    // @Body('fullName') fullName: string,
-    // @Body('rollNumber') rollNumber: string,
-    // @Body('departmentId') departmentId: number,
-    // @Body('course') course: string,
-    // @Body('enrollmentYear') enrollmentYear: number,
-  ) {
-    return this.usersService.addUser(
-      email,
-      role,
-      // password,
-      // fullName,
-      // rollNumber,
-      // departmentId,
-      // course,
-      // enrollmentYear,
-    );
+  addUser(@Body('email') email: string, @Body('role') role: string) {
+    return this.usersService.addUser(email, role);
   }
 
   @Put(':email')

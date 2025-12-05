@@ -10,21 +10,14 @@ export class AuthService {
     private readonly mailService: MailService,
   ) {}
 
-  async login(email: string, password: string) {
-    const user = await this.usersService.getSingleUser(email);
+  async login(body: { email: string; password: string }) {
+    const user = await this.usersService.getSingleUser(body.email);
 
-    if (!user || user.password !== password) {
+    if (!user || user.password !== body.password) {
       return { message: 'Invalid Credentials' };
     }
 
-    return {
-      message: 'Login successful',
-      user: {
-        id: user.userId,
-        email: user.email,
-        role: user.role,
-      },
-    };
+    return user;
   }
 
   async forgotPassword(email: string) {

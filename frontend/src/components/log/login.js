@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import CustomButton from '@/components/custom/Button';
 import CustomInput from '@/components/custom/Input';
+import { useRouter } from "next/navigation";
+import { login } from '@/services/AuthService';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,23 +14,23 @@ const Login = () => {
     msg: "",
   });
 
+  const router = useRouter();
+
   const onLogin = async () => {
-    if(!email|| !password){
+    if (!email || !password) {
       setalerts({ show: true, msg: "Please fill all fields." });
       return;
     }
 
-    const res = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }), 
-    });
+      const {res, role} = await login({email, password});
+      if (!res) {
+        setalerts({ show: true, msg: "Login failed. Check credentials." });
+        return;
+      }
 
-    const data = await res.json();
-    
-    if (data.user) {
-      alert('Omedetou! You have logged in successfully')
-    }
+      if (role === "admin") router.push("/admin");
+      else if (role === "student") router.push("/student");
+      else if (role === "teacher") router.push("/teacher");
   }
 
   return (

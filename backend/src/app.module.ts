@@ -10,6 +10,7 @@ import { CoursesModule } from './courses/courses.module';
 import { DepartmentsModule } from './departments/departments.module';
 import { EnrollmentModule } from './enrollment/enrollment.module';
 import { CourseAssignmentsModule } from './course_assignments/course_assignments.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { CourseAssignmentsModule } from './course_assignments/course_assignments
     DepartmentsModule,
     EnrollmentModule,
     CourseAssignmentsModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

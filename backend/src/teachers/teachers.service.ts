@@ -46,6 +46,7 @@ export class TeachersService {
 
   async findAll() {
     const teachers = await this.teacherRepository.find({
+      order: { teacherId: 'ASC' },
       relations: ['department', 'user'],
     });
     return teachers;
@@ -76,5 +77,12 @@ export class TeachersService {
     if (userId) await this.userRepository.delete({ userId });
 
     return { message: 'Teacher and user deleted successfully' };
+  }
+
+  async findByUserId(userId: number) {
+    return await this.teacherRepository.findOne({
+      where: { user: { userId } },
+      relations: ['department', 'user'],
+    });
   }
 }

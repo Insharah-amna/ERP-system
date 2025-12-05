@@ -32,7 +32,10 @@ export class CoursesService {
   }
 
   findAll() {
-    return this.courseRepository.find({ relations: ['department'] });
+    return this.courseRepository.find({
+      order: { courseId: 'ASC' },
+      relations: ['department'],
+    });
   }
 
   async findOne(id: number) {

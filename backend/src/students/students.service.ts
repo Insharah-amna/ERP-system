@@ -50,6 +50,7 @@ export class StudentsService {
 
   async findAll() {
     const students = await this.studentRepository.find({
+      order: { studentId: 'ASC' },
       relations: ['department', 'user'],
     });
     return students;
@@ -80,5 +81,12 @@ export class StudentsService {
     if (userId) await this.userRepository.delete({ userId });
 
     return { message: 'Student and user deleted successfully' };
+  }
+
+  async findByUserId(userId: number) {
+    return await this.studentRepository.findOne({
+      where: { user: { userId } },
+      relations: ['department', 'user'],
+    });
   }
 }

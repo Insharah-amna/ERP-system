@@ -41,4 +41,9 @@ export class StudentsController {
   deleteStudent(@Param('id') id: number) {
     return this.studentsService.delete(id);
   }
+
+  @Get('user/:userId')
+  async getStudentByUser(@Param('userId') userId: number) {
+    return await this.studentsService.findByUserId(userId);
+  }
 }

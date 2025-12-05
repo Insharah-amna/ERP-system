@@ -1,12 +1,11 @@
 import { Card, CardContent } from "../ui/card"
 
-const AdminDashboardCard = ({title, number, Icon}) => {
+const AdminDashboardCard = ({ title, number, Icon }) => {
   return (
     <Card className={'rounded-sm py-3'}>
       <CardContent>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center text-gray-800">
           <div className="p-2 rounded-xs bg-neutral-200">
-            {/* <GraduationCap /> */}
             <Icon/>
           </div>
 

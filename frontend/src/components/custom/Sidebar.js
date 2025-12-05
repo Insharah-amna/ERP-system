@@ -1,3 +1,4 @@
+'use client';
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/sidebar"
 import { sidebarMenuItems } from "../../constants/AdminSidebarMenu"
 import CustomButton from "./Button"
+import { logout } from "@/services/AuthService"
 
 export function AdminSidebar({ activeTab, setActiveTab }) {
   return (
@@ -43,8 +45,9 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
           </SidebarGroup>
 
           <CustomButton
-            buttonText={'Sign Out'}
+            buttonText={'Log Out'}
             className={'m-2 h-[30px] rounded-xs text-xs font-light bg-red-400'}
+            onClick={logout}
           />
         </div>
       </SidebarContent>

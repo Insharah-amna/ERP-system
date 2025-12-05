@@ -22,7 +22,9 @@ export class DepartmentsService {
   }
 
   async findAll() {
-    const departments = await this.departmentRepository.find();
+    const departments = await this.departmentRepository.find({
+      order: { departmentId: 'ASC' },
+    });
     return departments;
   }
 
@@ -48,10 +50,3 @@ export class DepartmentsService {
     return { message: 'Department deleted successfully' };
   }
 }
-
-// const csDepartment = await departmentRepository.findOne({
-//   where: { name: 'Computer Science' },
-//   relations: ['teachers'], // needs the inverse relation
-// });
-
-// console.log(csDepartment.teachers); // array of Teacher objects

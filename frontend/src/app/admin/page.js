@@ -3,12 +3,12 @@ import { useState } from "react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { AdminSidebar } from "@/components/custom/Sidebar";
 
-import getDate from "@/services/getDate"
 import Home from "@/components/admin/Home";
 import Departments from "@/components/admin/Departments";
 import Courses from "@/components/admin/Courses";
 import Teachers from "@/components/admin/Teachers";
 import Students from "@/components/admin/Students";
+import AdminHeader from "@/components/custom/headers/AdminHeader";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -23,8 +23,6 @@ export default function Page() {
 
   const ActiveComponent = components[activeTab];
 
-  const date = getDate();
-
   return (
     <>
       <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -35,13 +33,7 @@ export default function Page() {
         </div>
 
         <div className="p-4">
-          <div className="flex justify-between items-center sticky top-0">
-            <div>
-              <h1 className="text-lg font-semibold">Dashboard</h1>
-              <p className="text-xs">Welcome to Oreo</p>
-            </div>
-            <p className="px-4 py-2 bg-white rounded-md">{date}</p>
-          </div>
+          <AdminHeader />
 
           <div className="flex flex-col gap-4 my-4">
             <hr />

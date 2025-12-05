@@ -1,4 +1,5 @@
 import { Mail, Phone } from "lucide-react"
+import Link from "next/link"
 
 const Topbar = () => {
   return (
@@ -16,7 +17,7 @@ const Topbar = () => {
       </div>
 
       <div className="flex items-center">
-        <a href="#">Log in</a>
+        <Link href="/auth/login">Log in</Link>
       </div>
     </header>
   )

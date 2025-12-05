@@ -45,4 +45,9 @@ export class TeachersController {
   deleteTeacher(@Param('id') id: number) {
     return this.teachersService.delete(id);
   }
+
+  @Get('user/:userId')
+  async getTeacherByUser(@Param('userId') userId: number) {
+    return await this.teachersService.findByUserId(userId);
+  }
 }

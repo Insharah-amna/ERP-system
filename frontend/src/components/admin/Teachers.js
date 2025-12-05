@@ -26,7 +26,7 @@ const Teachers = () => {
     const payload = {
       fullName: teacher[0],
       email: teacher[1],
-      departmentId: teacher[2],
+      department: teacher[2],
     };
 
     const url = isEdit
@@ -41,10 +41,7 @@ const Teachers = () => {
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) {
-      console.log(res);
-      throw new Error("Failed to save!"); // show toast
-    }
+    if (!res.ok) throw new Error("Failed to save!");
 
     if (!isEdit) {
       const saved = await res.json();

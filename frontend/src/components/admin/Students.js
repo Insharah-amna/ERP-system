@@ -12,7 +12,7 @@ const Students = () => {
   const [student, setStudent] = useState({
     fullName: '',
     email: '',
-    rollNumber: 0,
+    rollNumber: '',
     departmentId: 0,
     enrollmentYear: 0,
   })
@@ -27,13 +27,9 @@ const Students = () => {
   const onSave = async () => {
     const { fullName, email, departmentId, rollNumber, semester, enrollmentYear } = student;
 
-    if (
-      !fullName || !email || !departmentId ||
-      !rollNumber || !enrollmentYear || !semester
-    ) {
+    if (!fullName || !email || !departmentId ||
+      !rollNumber || !enrollmentYear || !semester)
       setAlert({ show: true, msg: "Please fill all fields" });
-      return;
-    }
 
     const payload = {
       fullName: student.fullName,
@@ -56,17 +52,14 @@ const Students = () => {
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) {
-      console.log(res);
-      throw new Error("Failed to save!"); // show toast
-    }
+    if (!res.ok) alert("Failed to save!");
 
-    if (!isEdit) {
-      const saved = await res.json();
-      setData(prev => [...prev, saved]);
-    }
+    // if (!isEdit) {
+    //   const saved = await res.json();
+    //   setData(prev => [...prev, saved]);
+    // }
 
-    setStudent({ fullName: '', email: '', departmentId: 0, rollNumber: 0, enrollmentYear: 0 });
+    setStudent({ fullName: '', email: '', departmentId: 0, rollNumber: '', enrollmentYear: 0 });
     setSelectedId(null);
     setAlert({ show: false, msg: "" });
     setDialogOpen(false);
@@ -99,12 +92,12 @@ const Students = () => {
         const json = await res.json();
 
         setStudent({
-          fullName: json.fullName || '',
-          email: json.email || '',
-          semester: json.semester || 1,
-          rollNumber: json.rollNumber || 0,
-          departmentId: json.department?.departmentId || 0,
-          enrollmentYear: json.enrollmentYear || 0,
+          fullName: json.fullName,
+          email: json.email,
+          semester: json.semester,
+          rollNumber: json.rollNumber,
+          departmentId: json.department?.departmentId,
+          enrollmentYear: json.enrollmentYear,
         });
         setSelectedId(id);
       }

@@ -2,23 +2,23 @@ import { Building2Icon, GraduationCap, User, UserCircle } from "lucide-react"
 
 export const dashboardCardContent = [
   {
+    key: "students",
     title: "Students",
-    number: 2049,
     icon: User,
   },
   {
+    key: "teachers",
     title: "Teachers",
-    number: 64,
     icon: UserCircle,
   },
   {
+    key: "courses",
     title: "Courses",
-    number: 70,
     icon: GraduationCap,
   },
   {
+    key: "departments",
     title: "Departments",
-    number: 5,
     icon: Building2Icon,
   },
 ]

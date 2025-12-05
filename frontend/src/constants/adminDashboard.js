@@ -54,10 +54,10 @@ export const studentHeaderItems = [
     title: 'Full Name',
   },
   {
-    title: 'Email',
+    title: 'Roll Number',
   },
   {
-    title: 'Roll Number',
+    title: 'Email',
   },
   {
     title: 'Semester',
