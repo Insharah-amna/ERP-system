@@ -42,7 +42,7 @@ const Courses = () => {
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error("Failed to save!"); // show toast
+    if (!res.ok) throw new Error("Failed to save!"); 
 
     if (!isEdit) {
       const saved = await res.json();
@@ -62,6 +62,7 @@ const Courses = () => {
         "Content-Type": "application/json",
       },
     });
+    if (!res.ok) throw new Error("Failed to delete!"); 
 
     setData(prev => prev.filter(c => c.courseId !== id));
     setSelectedId(null);

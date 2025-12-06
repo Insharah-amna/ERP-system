@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import AdminDashboardCard from '../custom/AdminDashboardCard'
 import { dashboardCardContent } from './DashboardCardContent'
+import StatsBarChart from '../custom/charts';
 
 const Home = () => {
   const [stats, setStats] = useState({
@@ -20,9 +21,10 @@ const Home = () => {
 
     loadStats();
   }, []);
-
+  
   return (
-    <div className="grid grid-cols-4 gap-6 my-4">
+    <div className='grid lg:grid-cols-2 gap-5 mx-4'>
+      <div className="grid grid-cols-2 gap-8 my-4">
         {dashboardCardContent.map((item) => (
           <AdminDashboardCard
             key={item.key}
@@ -32,6 +34,9 @@ const Home = () => {
           />
         ))}
       </div>
+
+      <StatsBarChart stats={stats} />
+    </div>
   )
 }
 

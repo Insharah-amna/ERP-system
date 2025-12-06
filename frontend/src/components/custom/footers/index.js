@@ -18,23 +18,23 @@ const Footer = () => {
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-semibold">Information About:</h1>
           <ul className="flex flex-col gap-2 underline">
-            <li><a href="#">Oreo University</a></li>
-            <li><a href="#">Our Research Ecosystem</a></li>
-            <li><a href="#">Fee Structure</a></li>
-            <li><a href="#">Scholarships</a></li>
-            <li><a href="#">Libraries</a></li>
-            <li><a href="#">Sports and Fitness</a></li>
+            <li><a href="/about">Oreo University</a></li>
+            <li><a href="/about">Our Research Ecosystem</a></li>
+            <li><a href="/about">Fee Structure</a></li>
+            <li><a href="/about">Scholarships</a></li>
+            <li><a href="/about">Libraries</a></li>
+            <li><a href="/about">Sports and Fitness</a></li>
           </ul>
         </div>
 
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-semibold">Information For:</h1>
           <ul className="flex flex-col gap-2 underline">
-            <li><a href="#">International Students</a></li>
-            <li><a href="#">Exchange Students</a></li>
-            <li><a href="#">Alumini</a></li>
-            <li><a href="#">International Partnerships</a></li>
-            <li><a href="#">Academic Partnerships</a></li>
+            <li><a href="/contact">International Students</a></li>
+            <li><a href="/contact">Exchange Students</a></li>
+            <li><a href="/contact">Alumini</a></li>
+            <li><a href="/contact">International Partnerships</a></li>
+            <li><a href="/contact">Academic Partnerships</a></li>
           </ul>
         </div>
 

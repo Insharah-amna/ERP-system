@@ -13,10 +13,10 @@ const Students = () => {
     fullName: '',
     email: '',
     rollNumber: '',
+    semester: 1,
     departmentId: 0,
     enrollmentYear: 0,
   })
-
   const [data, setData] = useState([]);
   const [alert, setAlert] = useState({ show: false, msg: '' });
   const [isEdit, setIsEdit] = useState(false);
@@ -54,12 +54,11 @@ const Students = () => {
 
     if (!res.ok) alert("Failed to save!");
 
-    // if (!isEdit) {
-    //   const saved = await res.json();
-    //   setData(prev => [...prev, saved]);
-    // }
-
-    setStudent({ fullName: '', email: '', departmentId: 0, rollNumber: '', enrollmentYear: 0 });
+    setStudent({
+      fullName: '', email: '',
+      departmentId: 0, semester: 1,
+      rollNumber: '', enrollmentYear: 0
+    });
     setSelectedId(null);
     setAlert({ show: false, msg: "" });
     setDialogOpen(false);
@@ -72,6 +71,7 @@ const Students = () => {
         "Content-Type": "application/json",
       },
     });
+    if (!res.ok) throw new Error("Failed to delete!"); 
 
     setData(prev => prev.filter(c => c.studentId !== id));
     setSelectedId(null);

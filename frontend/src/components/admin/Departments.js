@@ -40,11 +40,11 @@ const Departments = () => {
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error("Failed to save!"); // show toast
+    if (!res.ok) throw new Error("Failed to save!");
 
     if (!isEdit) {
       const saved = await res.json();
-      setData(prev => [...prev, saved]); // If new department was added → refresh table
+      setData(prev => [...prev, saved]);
     }
 
     setDept(["", ""]);
@@ -60,6 +60,7 @@ const Departments = () => {
         "Content-Type": "application/json",
       },
     });
+    if (!res.ok) throw new Error("Failed to save!");
 
     setData(prev => prev.filter(d => d.departmentId !== id));
     setSelectedId(null);

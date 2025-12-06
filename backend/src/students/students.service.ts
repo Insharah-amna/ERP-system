@@ -11,8 +11,10 @@ export class StudentsService {
   constructor(
     @InjectRepository(Student)
     private readonly studentRepository: Repository<Student>,
+
     @InjectRepository(Department)
     private departmentRepository: Repository<Department>,
+
     @InjectRepository(Users)
     private userRepository: Repository<Users>,
   ) {}

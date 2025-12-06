@@ -22,15 +22,16 @@ const Login = () => {
       return;
     }
 
-      const {res, role} = await login({email, password});
-      if (!res) {
-        setalerts({ show: true, msg: "Login failed. Check credentials." });
-        return;
-      }
+    const { res, role } = await login({ email, password });
+    
+    if (!res) {
+      setalerts({ show: true, msg: "Login failed. Check credentials." });
+      return;
+    }
 
-      if (role === "admin") router.push("/admin");
-      else if (role === "student") router.push("/student");
-      else if (role === "teacher") router.push("/teacher");
+    if (role === "admin") router.push("/admin");
+    else if (role === "student") router.push("/student");
+    else if (role === "teacher") router.push("/teacher");
   }
 
   return (

@@ -61,6 +61,7 @@ const Teachers = () => {
         "Content-Type": "application/json",
       },
     });
+    if (!res.ok) throw new Error("Failed to delete!"); 
 
     setData(prev => prev.filter(c => c.teacherId !== id));
     setSelectedId(null);

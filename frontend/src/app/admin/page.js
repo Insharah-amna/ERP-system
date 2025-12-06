@@ -28,7 +28,7 @@ export default function Page() {
       <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex flex-col w-full bg-neutral-100">
-        <div className="bg-white shadow-sm h-12 flex items-center justify-between px-2">
+        <div className="bg-white shadow-sm h-12 flex items-center justify-between px-2 sticky top-0 z-10">
           <SidebarTrigger />
         </div>
 

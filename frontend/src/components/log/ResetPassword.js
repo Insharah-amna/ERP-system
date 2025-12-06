@@ -35,7 +35,7 @@ const ResetPassword = ({ email }) => {
 
     const data = await res.json();
     
-    if (data) {
+    if (res.ok) {
       alert(data.message);
     }
   }

@@ -35,7 +35,7 @@ const Profile = () => {
 
         <div className="flex flex-col gap-2 items-center">
           <h3 className="font-semibold">{'Under Graduate'}</h3>
-          <h5 className="font-light">{student.department.departmentName}</h5>
+          <h5 className="font-light">BS {student.department.departmentName}</h5>
           <h5 className="font-light">{`Current Semester: ${student.semester}`}</h5>
         </div>
       </div>

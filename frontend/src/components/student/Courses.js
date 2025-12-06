@@ -45,6 +45,13 @@ const Courses = () => {
               </Link>
             ))
           }
+          {
+            enrollments.length === 0 && (
+              <div className="col-span-full text-center text-gray-500 py-2">
+                You are not enrolled in any course.
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
