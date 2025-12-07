@@ -1,12 +1,12 @@
-'use client'
-import { useEffect, useState } from "react"
-import CustomInput from "../custom/Input"
-import { CustomDialog } from "../custom/dialog/Dialog"
-import { CustomTable } from "../custom/tables"
-import { studentHeaderItems } from "@/constants/adminDashboard"
-import { TableCell, TableRow } from "../ui/table"
-import StudentRow from "../custom/tables/StudentRow"
-import CustomButton from "../custom/Button"
+'use client';
+import { useEffect, useState } from 'react';
+import CustomInput from '../custom/Input';
+import { CustomDialog } from '../custom/dialog/Dialog';
+import { CustomTable } from '../custom/tables';
+import { studentHeaderItems } from '@/constants/adminDashboard';
+import { TableCell, TableRow } from '../ui/table';
+import StudentRow from '../custom/tables/StudentRow';
+import CustomButton from '../custom/Button';
 
 const Students = () => {
   const [student, setStudent] = useState({
@@ -16,7 +16,7 @@ const Students = () => {
     semester: 1,
     departmentId: 0,
     enrollmentYear: 0,
-  })
+  });
   const [data, setData] = useState([]);
   const [alert, setAlert] = useState({ show: false, msg: '' });
   const [isEdit, setIsEdit] = useState(false);
@@ -27,9 +27,8 @@ const Students = () => {
   const onSave = async () => {
     const { fullName, email, departmentId, rollNumber, semester, enrollmentYear } = student;
 
-    if (!fullName || !email || !departmentId ||
-      !rollNumber || !enrollmentYear || !semester)
-      setAlert({ show: true, msg: "Please fill all fields" });
+    if (!fullName || !email || !departmentId || !rollNumber || !enrollmentYear || !semester)
+      setAlert({ show: true, msg: 'Please fill all fields' });
 
     const payload = {
       fullName: student.fullName,
@@ -42,41 +41,44 @@ const Students = () => {
 
     const url = isEdit
       ? `http://localhost:3001/students/${selectedId}`
-      : "http://localhost:3001/students";
+      : 'http://localhost:3001/students';
 
-    const method = isEdit ? "PATCH" : "POST";
+    const method = isEdit ? 'PATCH' : 'POST';
 
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) alert("Failed to save!");
+    if (!res.ok) alert('Failed to save!');
 
     setStudent({
-      fullName: '', email: '',
-      departmentId: 0, semester: 1,
-      rollNumber: '', enrollmentYear: 0
+      fullName: '',
+      email: '',
+      departmentId: 0,
+      semester: 1,
+      rollNumber: '',
+      enrollmentYear: 0,
     });
     setSelectedId(null);
-    setAlert({ show: false, msg: "" });
+    setAlert({ show: false, msg: '' });
     setDialogOpen(false);
   };
 
   const handleDelete = async (id) => {
     const res = await fetch(`http://localhost:3001/students/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
-    if (!res.ok) throw new Error("Failed to delete!"); 
+    if (!res.ok) throw new Error('Failed to delete!');
 
-    setData(prev => prev.filter(c => c.studentId !== id));
+    setData((prev) => prev.filter((c) => c.studentId !== id));
     setSelectedId(null);
     setDeleteOpen(false);
-  }
+  };
 
   useEffect(() => {
     async function load() {
@@ -112,17 +114,17 @@ const Students = () => {
 
         <CustomButton
           buttonText="Add Student"
-          className='bg-teal-600 rounded-sm'
+          className="bg-teal-600 rounded-sm"
           onClick={() => {
-            setIsEdit(false)
-            setDialogOpen(true)
+            setIsEdit(false);
+            setDialogOpen(true);
           }}
         />
 
         <CustomDialog
           isOpen={dialogOpen}
           setIsOpen={setDialogOpen}
-          dialogTitle={isEdit ? "Edit Student" : "Add Student"}
+          dialogTitle={isEdit ? 'Edit Student' : 'Add Student'}
           onSave={onSave}
           onClose={() => setStudent({})}
           fields={
@@ -131,18 +133,14 @@ const Students = () => {
                 id={'studentName'}
                 label="Full Name"
                 value={student.fullName}
-                onChange={(e) =>
-                  setStudent(prev => ({ ...prev, fullName: e.target.value }))
-                }
+                onChange={(e) => setStudent((prev) => ({ ...prev, fullName: e.target.value }))}
                 alerts={alert}
               />
               <CustomInput
                 id={'email'}
                 label="Email"
                 value={student.email}
-                onChange={(e) =>
-                  setStudent(prev => ({ ...prev, email: e.target.value }))
-                }
+                onChange={(e) => setStudent((prev) => ({ ...prev, email: e.target.value }))}
                 alerts={alert}
               />
               <div className="flex gap-5">
@@ -150,9 +148,7 @@ const Students = () => {
                   id={'roll_number'}
                   label="Roll Number"
                   value={student.rollNumber}
-                  onChange={(e) =>
-                    setStudent(prev => ({ ...prev, rollNumber: e.target.value }))
-                  }
+                  onChange={(e) => setStudent((prev) => ({ ...prev, rollNumber: e.target.value }))}
                   alerts={alert}
                 />
                 <CustomInput
@@ -160,7 +156,7 @@ const Students = () => {
                   label="Department"
                   value={student.departmentId}
                   onChange={(e) =>
-                    setStudent(prev => ({ ...prev, departmentId: e.target.value }))
+                    setStudent((prev) => ({ ...prev, departmentId: e.target.value }))
                   }
                   alerts={alert}
                 />
@@ -173,9 +169,7 @@ const Students = () => {
                   type="number"
                   defaultValue={1}
                   value={student.semester}
-                  onChange={(e) =>
-                    setStudent(prev => ({ ...prev, semester: e.target.value }))
-                  }
+                  onChange={(e) => setStudent((prev) => ({ ...prev, semester: e.target.value }))}
                   alerts={alert}
                 />
                 <CustomInput
@@ -184,7 +178,7 @@ const Students = () => {
                   type="number"
                   value={student.enrollmentYear}
                   onChange={(e) =>
-                    setStudent(prev => ({ ...prev, enrollmentYear: e.target.value }))
+                    setStudent((prev) => ({ ...prev, enrollmentYear: e.target.value }))
                   }
                   alerts={alert}
                 />
@@ -192,8 +186,7 @@ const Students = () => {
             </div>
           }
         />
-        {
-          deleteOpen &&
+        {deleteOpen && (
           <CustomDialog
             isOpen={deleteOpen}
             setIsOpen={setDeleteOpen}
@@ -207,7 +200,7 @@ const Students = () => {
               </>
             }
           />
-        }
+        )}
       </div>
 
       <div className="px-4">
@@ -227,10 +220,7 @@ const Students = () => {
               ))}
               {data.length === 0 && (
                 <TableRow>
-                  <TableCell
-                    colSpan={5}
-                    className='text-center py-4 text-gray-500'
-                  >
+                  <TableCell colSpan={5} className="text-center py-4 text-gray-500">
                     No students enrolled yet.
                   </TableCell>
                 </TableRow>
@@ -240,7 +230,7 @@ const Students = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Students
+export default Students;

@@ -8,10 +8,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { sidebarMenuItems } from "../../constants/AdminSidebarMenu"
-import CustomButton from "./Button"
-import { logout } from "@/services/AuthService"
+} from '@/components/ui/sidebar';
+import { sidebarMenuItems } from '../../constants/AdminSidebarMenu';
+import CustomButton from './Button';
+import { logout } from '@/services/AuthService';
 
 export function AdminSidebar({ activeTab, setActiveTab }) {
   return (
@@ -29,8 +29,9 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
                     <SidebarMenuButton asChild>
                       <div
                         className={`cursor-pointer rounded-sm 
-                          ${activeTab === tab.title ?
-                            'bg-teal-600 hover:bg-teal-600 text-white hover:text-white' : ''
+                          ${
+                            activeTab === tab.title &&
+                            'bg-teal-600 hover:bg-teal-600 text-white hover:text-white'
                           }`}
                         onClick={() => setActiveTab(tab.title)}
                       >
@@ -52,5 +53,5 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
         </div>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

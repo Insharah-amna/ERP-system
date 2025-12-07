@@ -5,8 +5,8 @@ import {
   DialogTitle,
   DialogClose,
   DialogFooter,
-} from "@/components/ui/dialog"
-import CustomButton from "../Button"
+} from '@/components/ui/dialog';
+import CustomButton from '../Button';
 
 export function CustomDialog({
   dialogTitle = 'Dialog Title',
@@ -15,9 +15,8 @@ export function CustomDialog({
   fields,
   onSave,
   onClose,
-  isDelete = false
+  isDelete = false,
 }) {
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[425px]">
@@ -45,5 +44,5 @@ export function CustomDialog({
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

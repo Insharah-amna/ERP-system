@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa"
+import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -18,23 +18,45 @@ const Footer = () => {
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-semibold">Information About:</h1>
           <ul className="flex flex-col gap-2 underline">
-            <li><a href="/about">Oreo University</a></li>
-            <li><a href="/about">Our Research Ecosystem</a></li>
-            <li><a href="/about">Fee Structure</a></li>
-            <li><a href="/about">Scholarships</a></li>
-            <li><a href="/about">Libraries</a></li>
-            <li><a href="/about">Sports and Fitness</a></li>
+            <li>
+              <a href="/about">Oreo University</a>
+            </li>
+            <li>
+              <a href="/about">Our Research Ecosystem</a>
+            </li>
+            <li>
+              <a href="/about">Fee Structure</a>
+            </li>
+            <li>
+              <a href="/about">Scholarships</a>
+            </li>
+            <li>
+              <a href="/about">Libraries</a>
+            </li>
+            <li>
+              <a href="/about">Sports and Fitness</a>
+            </li>
           </ul>
         </div>
 
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-semibold">Information For:</h1>
           <ul className="flex flex-col gap-2 underline">
-            <li><a href="/contact">International Students</a></li>
-            <li><a href="/contact">Exchange Students</a></li>
-            <li><a href="/contact">Alumini</a></li>
-            <li><a href="/contact">International Partnerships</a></li>
-            <li><a href="/contact">Academic Partnerships</a></li>
+            <li>
+              <a href="/contact">International Students</a>
+            </li>
+            <li>
+              <a href="/contact">Exchange Students</a>
+            </li>
+            <li>
+              <a href="/contact">Alumini</a>
+            </li>
+            <li>
+              <a href="/contact">International Partnerships</a>
+            </li>
+            <li>
+              <a href="/contact">Academic Partnerships</a>
+            </li>
           </ul>
         </div>
 
@@ -46,9 +68,9 @@ const Footer = () => {
             <li>Email: cms@oreo.edu.pk</li>
           </ul>
         </div>
-      </div>      
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

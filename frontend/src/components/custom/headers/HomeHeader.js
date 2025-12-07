@@ -1,5 +1,5 @@
-import { Clock, LocateIcon } from "lucide-react"
-import { GiOre } from "react-icons/gi"
+import { Clock, LocateIcon } from 'lucide-react';
+import { GiOre } from 'react-icons/gi';
 
 const HomeHeader = () => {
   return (
@@ -12,20 +12,16 @@ const HomeHeader = () => {
       <div className="flex flex-col gap-1 items-center">
         <div className="flex gap-1 items-center">
           <Clock color="white" size={12} />
-          <page className="text-xs text-white">
-            Mon - Sat: 9:00 - 16:00, Sun: Closed
-          </page>
+          <p className="text-xs text-white">Mon - Sat: 9:00 - 16:00, Sun: Closed</p>
         </div>
 
         <div className="flex gap-1 items-center">
           <LocateIcon color="white" size={12} />
-          <p className="text-xs text-white">
-            1422 Raiwind Road, Oreo University
-          </p>
+          <p className="text-xs text-white">1422 Raiwind Road, Oreo University</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeHeader
+export default HomeHeader;

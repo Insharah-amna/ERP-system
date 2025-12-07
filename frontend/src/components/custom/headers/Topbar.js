@@ -1,5 +1,5 @@
-import { Mail, Phone } from "lucide-react"
-import Link from "next/link"
+import { Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 const Topbar = () => {
   return (
@@ -20,7 +20,7 @@ const Topbar = () => {
         <Link href="/auth/login">Log in</Link>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Topbar
+export default Topbar;

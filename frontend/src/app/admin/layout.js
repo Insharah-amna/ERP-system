@@ -1,9 +1,5 @@
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 export default function Layout({ children }) {
-  return (
-    <SidebarProvider>
-      {children}
-    </SidebarProvider>
-  )
+  return <SidebarProvider>{children}</SidebarProvider>;
 }

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import AdminDashboardCard from '../custom/AdminDashboardCard'
-import { dashboardCardContent } from './DashboardCardContent'
+import AdminDashboardCard from '../custom/AdminDashboardCard';
+import { dashboardCardContent } from './DashboardCardContent';
 import StatsBarChart from '../custom/charts';
 
 const Home = () => {
@@ -14,16 +14,16 @@ const Home = () => {
 
   useEffect(() => {
     const loadStats = async () => {
-      const res = await fetch("http://localhost:3001/dashboard/stats");
+      const res = await fetch('http://localhost:3001/dashboard/stats');
       const data = await res.json();
       setStats(data);
     };
 
     loadStats();
   }, []);
-  
+
   return (
-    <div className='grid lg:grid-cols-2 gap-5 mx-4'>
+    <div className="grid lg:grid-cols-2 gap-5 mx-4">
       <div className="grid grid-cols-2 gap-8 my-4">
         {dashboardCardContent.map((item) => (
           <AdminDashboardCard
@@ -37,7 +37,7 @@ const Home = () => {
 
       <StatsBarChart stats={stats} />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

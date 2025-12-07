@@ -57,7 +57,7 @@ export default function Contact() {
               buttonText={'Send Message'}
               type="submit"
               className="bg-teal-600 text-white px-6 h-11 rounded-xl shadow-md hover:bg-teal-700 transition cursor-pointer"
-            />
+              />
           </form>
         </section>
       </div>

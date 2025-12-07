@@ -1,12 +1,12 @@
-'use client'
-import { useEffect, useState } from "react"
-import CustomInput from "../custom/Input"
-import { CustomDialog } from "../custom/dialog/Dialog"
-import { CustomTable } from "../custom/tables"
-import { teacherHeaderItems } from "@/constants/adminDashboard"
-import { TableCell, TableRow } from "../ui/table"
-import TeacherRow from "../custom/tables/TeacherRow"
-import CustomButton from "../custom/Button"
+'use client';
+import { useEffect, useState } from 'react';
+import CustomInput from '../custom/Input';
+import { CustomDialog } from '../custom/dialog/Dialog';
+import { CustomTable } from '../custom/tables';
+import { teacherHeaderItems } from '@/constants/adminDashboard';
+import { TableCell, TableRow } from '../ui/table';
+import TeacherRow from '../custom/tables/TeacherRow';
+import CustomButton from '../custom/Button';
 
 const Teachers = () => {
   const [teacher, setTeacher] = useState(['', '', '']);
@@ -19,7 +19,7 @@ const Teachers = () => {
 
   const onSave = async () => {
     if (!teacher[0] || !teacher[1] || !teacher[2]) {
-      setAlert({ show: true, msg: "Please fill all fields" });
+      setAlert({ show: true, msg: 'Please fill all fields' });
       return;
     }
 
@@ -31,42 +31,37 @@ const Teachers = () => {
 
     const url = isEdit
       ? `http://localhost:3001/teachers/${selectedId}`
-      : "http://localhost:3001/teachers";
+      : 'http://localhost:3001/teachers';
 
-    const method = isEdit ? "PATCH" : "POST";
+    const method = isEdit ? 'PATCH' : 'POST';
 
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error("Failed to save!");
-
-    if (!isEdit) {
-      const saved = await res.json();
-      setData(prev => [...prev, saved]);
-    }
+    if (!res.ok) throw new Error('Failed to save!');
 
     setTeacher(['', '', '']);
     setSelectedId(null);
-    setAlert({ show: false, msg: "" });
+    setAlert({ show: false, msg: '' });
     setDialogOpen(false);
   };
 
   const handleDelete = async (id) => {
     const res = await fetch(`http://localhost:3001/teachers/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
-    if (!res.ok) throw new Error("Failed to delete!"); 
+    if (!res.ok) throw new Error('Failed to delete!');
 
-    setData(prev => prev.filter(c => c.teacherId !== id));
+    setData((prev) => prev.filter((c) => c.teacherId !== id));
     setSelectedId(null);
     setDeleteOpen(false);
-  }
+  };
 
   useEffect(() => {
     async function load() {
@@ -78,15 +73,11 @@ const Teachers = () => {
 
     if (isEdit && selectedId) {
       async function loadSingle(id) {
-          const res = await fetch(`http://localhost:3001/teachers/${id}`);
-          const json = await res.json();
+        const res = await fetch(`http://localhost:3001/teachers/${id}`);
+        const json = await res.json();
 
-          setTeacher([
-            json.fullName,
-            json.email,
-            json.department.departmentId,
-          ]);
-          setSelectedId(id);
+        setTeacher([json.fullName, json.email, json.department.departmentId]);
+        setSelectedId(id);
       }
       loadSingle(selectedId);
     }
@@ -99,17 +90,17 @@ const Teachers = () => {
 
         <CustomButton
           buttonText="Add Teacher"
-          className='bg-teal-600 rounded-sm'
+          className="bg-teal-600 rounded-sm"
           onClick={() => {
-            setIsEdit(false)
-            setDialogOpen(true)
+            setIsEdit(false);
+            setDialogOpen(true);
           }}
         />
 
         <CustomDialog
           isOpen={dialogOpen}
           setIsOpen={setDialogOpen}
-          dialogTitle={isEdit ? "Edit Teacher" : "Add Teacher"}
+          dialogTitle={isEdit ? 'Edit Teacher' : 'Add Teacher'}
           onSave={onSave}
           onClose={() => setTeacher(['', '', ''])}
           fields={
@@ -118,18 +109,14 @@ const Teachers = () => {
                 id={'teacherName'}
                 label="Full Name"
                 value={teacher[0]}
-                onChange={(e) =>
-                  setTeacher(prev => [e.target.value, prev[1], prev[2]])
-                }
+                onChange={(e) => setTeacher((prev) => [e.target.value, prev[1], prev[2]])}
                 alerts={alert}
               />
               <CustomInput
                 id={'email'}
                 label="Email"
                 value={teacher[1]}
-                onChange={(e) =>
-                  setTeacher(prev => [prev[0], e.target.value, prev[2]])
-                }
+                onChange={(e) => setTeacher((prev) => [prev[0], e.target.value, prev[2]])}
                 alerts={alert}
               />
               <CustomInput
@@ -137,16 +124,13 @@ const Teachers = () => {
                 label="Department Id"
                 type="number"
                 value={teacher[2]}
-                onChange={(e) =>
-                  setTeacher(prev => [prev[0], prev[1], e.target.value])
-                }
+                onChange={(e) => setTeacher((prev) => [prev[0], prev[1], e.target.value])}
                 alerts={alert}
               />
             </div>
           }
         />
-        {
-          deleteOpen &&
+        {deleteOpen && (
           <CustomDialog
             isOpen={deleteOpen}
             setIsOpen={setDeleteOpen}
@@ -160,7 +144,7 @@ const Teachers = () => {
               </>
             }
           />
-        }
+        )}
       </div>
 
       <div className="px-4">
@@ -180,10 +164,7 @@ const Teachers = () => {
               ))}
               {data.length === 0 && (
                 <TableRow>
-                  <TableCell
-                    colSpan={5}
-                    className='text-center py-4 text-gray-500'
-                  >
+                  <TableCell colSpan={5} className="text-center py-4 text-gray-500">
                     No teachers added yet.
                   </TableCell>
                 </TableRow>
@@ -193,7 +174,7 @@ const Teachers = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Teachers
+export default Teachers;

@@ -1,12 +1,12 @@
-'use client'
-import { useEffect, useState } from "react"
-import CustomInput from "../custom/Input"
-import { CustomDialog } from "../custom/dialog/Dialog"
-import { CustomTable } from "../custom/tables"
-import { deptHeaderItems } from "@/constants/adminDashboard"
-import { TableCell, TableRow } from "../ui/table"
-import DeptRow from "../custom/tables/DeptRow"
-import CustomButton from "../custom/Button"
+'use client';
+import { useEffect, useState } from 'react';
+import CustomInput from '../custom/Input';
+import { CustomDialog } from '../custom/dialog/Dialog';
+import { CustomTable } from '../custom/tables';
+import { deptHeaderItems } from '@/constants/adminDashboard';
+import { TableCell, TableRow } from '../ui/table';
+import DeptRow from '../custom/tables/DeptRow';
+import CustomButton from '../custom/Button';
 
 const Departments = () => {
   const [dept, setDept] = useState(['', '']); // [name, head]
@@ -19,7 +19,7 @@ const Departments = () => {
 
   const onSave = async () => {
     if (!dept[0] || !dept[1]) {
-      setAlert({ show: true, msg: "Please fill all fields" });
+      setAlert({ show: true, msg: 'Please fill all fields' });
       return;
     }
 
@@ -30,42 +30,37 @@ const Departments = () => {
 
     const url = isEdit
       ? `http://localhost:3001/departments/${selectedId}`
-      : "http://localhost:3001/departments";
+      : 'http://localhost:3001/departments';
 
-    const method = isEdit ? "PATCH" : "POST";
+    const method = isEdit ? 'PATCH' : 'POST';
 
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error("Failed to save!");
+    if (!res.ok) throw new Error('Failed to save!');
 
-    if (!isEdit) {
-      const saved = await res.json();
-      setData(prev => [...prev, saved]);
-    }
-
-    setDept(["", ""]);
+    setDept(['', '']);
     setSelectedId(null);
-    setAlert({ show: false, msg: "" });
+    setAlert({ show: false, msg: '' });
     setDialogOpen(false);
   };
 
   const handleDelete = async (id) => {
     const res = await fetch(`http://localhost:3001/departments/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
-    if (!res.ok) throw new Error("Failed to save!");
+    if (!res.ok) throw new Error('Failed to save!');
 
-    setData(prev => prev.filter(d => d.departmentId !== id));
+    setData((prev) => prev.filter((d) => d.departmentId !== id));
     setSelectedId(null);
     setDeleteOpen(false);
-  }
+  };
 
   useEffect(() => {
     async function load() {
@@ -93,19 +88,19 @@ const Departments = () => {
 
         <CustomButton
           buttonText="Add Department"
-          className='bg-teal-600 rounded-sm'
+          className="bg-teal-600 rounded-sm"
           onClick={() => {
-            setIsEdit(false)
-            setDialogOpen(true)
+            setIsEdit(false);
+            setDialogOpen(true);
           }}
         />
 
         <CustomDialog
           isOpen={dialogOpen}
           setIsOpen={setDialogOpen}
-          dialogTitle={isEdit ? "Edit Department" : "Add Department"}
+          dialogTitle={isEdit ? 'Edit Department' : 'Add Department'}
           onSave={onSave}
-          onClose={() => setDept(['',''])}
+          onClose={() => setDept(['', ''])}
           fields={
             <div className="grid gap-4">
               <CustomInput
@@ -113,7 +108,7 @@ const Departments = () => {
                 id={'deptName'}
                 label="Department Name"
                 value={dept[0]}
-                onChange={(e) => setDept(prev => [e.target.value, prev[1]])}
+                onChange={(e) => setDept((prev) => [e.target.value, prev[1]])}
                 alerts={alert}
               />
               <CustomInput
@@ -121,20 +116,19 @@ const Departments = () => {
                 id={'deptHead'}
                 label="Department Head"
                 value={dept[1]}
-                onChange={(e) => setDept(prev => [prev[0], e.target.value])}
+                onChange={(e) => setDept((prev) => [prev[0], e.target.value])}
                 alerts={alert}
               />
             </div>
           }
         />
-        {
-          deleteOpen &&
+        {deleteOpen && (
           <CustomDialog
             isOpen={deleteOpen}
             setIsOpen={setDeleteOpen}
             dialogTitle="Delete Confirmation"
             onSave={() => handleDelete(selectedId)}
-            onClose={() => setDept(['',''])}
+            onClose={() => setDept(['', ''])}
             isDelete={true}
             fields={
               <>
@@ -142,7 +136,7 @@ const Departments = () => {
               </>
             }
           />
-        }
+        )}
       </div>
 
       <div className="px-4">
@@ -162,10 +156,7 @@ const Departments = () => {
               ))}
               {data.length === 0 && (
                 <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    className='text-center py-4 text-gray-500'
-                  >
+                  <TableCell colSpan={4} className="text-center py-4 text-gray-500">
                     No departments added yet.
                   </TableCell>
                 </TableRow>
@@ -175,7 +166,7 @@ const Departments = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Departments
+export default Departments;

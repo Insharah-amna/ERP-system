@@ -10,9 +10,9 @@ const Courses = () => {
     const id = localStorage.getItem("entityId");
 
     const fetchData = async () => {
-        const enrollRes = await fetch(`http://localhost:3001/enrollments/student/${id}`);
-        const enrollData = await enrollRes.json();
-        setEnrollments(enrollData);
+      const enrollRes = await fetch(`http://localhost:3001/enrollments/student/${id}`);
+      const enrollData = await enrollRes.json();
+      setEnrollments(enrollData);
     };
 
     fetchData();
