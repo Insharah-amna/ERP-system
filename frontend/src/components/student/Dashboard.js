@@ -15,7 +15,7 @@ const Dashboard = () => {
         const enrollRes = await fetch(`http://localhost:3001/enrollments/student/${id}`);
         const enrollData = await enrollRes.json();
         setEnrollments(enrollData);
-
+      
         const studentRes = await fetch(`http://localhost:3001/students/${id}`);
         const studentData = await studentRes.json();
         setStudent(studentData);

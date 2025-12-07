@@ -1,7 +1,7 @@
-import Courses from "@/components/student/Courses"
+import Courses from '@/components/student/Courses';
 
 const page = () => {
-  return <Courses />
-}
+  return <Courses />;
+};
 
-export default page
+export default page;

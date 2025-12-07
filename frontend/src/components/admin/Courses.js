@@ -1,12 +1,12 @@
-'use client'
-import { useEffect, useState } from "react"
-import CustomInput from "../custom/Input"
-import { CustomDialog } from "../custom/dialog/Dialog"
-import { CustomTable } from "../custom/tables"
-import { courseHeaderItems } from "@/constants/adminDashboard"
-import { TableCell, TableRow } from "../ui/table"
-import CourseRow from "../custom/tables/CourseRow"
-import CustomButton from "../custom/Button"
+'use client';
+import { useEffect, useState } from 'react';
+import CustomInput from '../custom/Input';
+import { CustomDialog } from '../custom/dialog/Dialog';
+import { CustomTable } from '../custom/tables';
+import { courseHeaderItems } from '@/constants/adminDashboard';
+import { TableCell, TableRow } from '../ui/table';
+import CourseRow from '../custom/tables/CourseRow';
+import CustomButton from '../custom/Button';
 
 const Courses = () => {
   const [course, setCourse] = useState([]);
@@ -19,7 +19,7 @@ const Courses = () => {
 
   const onSave = async () => {
     if (!course[0] || !course[1] || !course[2] || !course[3]) {
-      setAlert({ show: true, msg: "Please fill all fields" });
+      setAlert({ show: true, msg: 'Please fill all fields' });
       return;
     }
 
@@ -32,42 +32,37 @@ const Courses = () => {
 
     const url = isEdit
       ? `http://localhost:3001/courses/${selectedId}`
-      : "http://localhost:3001/courses";
+      : 'http://localhost:3001/courses';
 
-    const method = isEdit ? "PATCH" : "POST";
+    const method = isEdit ? 'PATCH' : 'POST';
 
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    if (!res.ok) throw new Error("Failed to save!"); 
-
-    if (!isEdit) {
-      const saved = await res.json();
-      setData(prev => [...prev, saved]); table
-    }
+    if (!res.ok) throw new Error('Failed to save!');
 
     setCourse(['', '', '', '']);
     setSelectedId(null);
-    setAlert({ show: false, msg: "" });
+    setAlert({ show: false, msg: '' });
     setDialogOpen(false);
   };
 
   const handleDelete = async (id) => {
     const res = await fetch(`http://localhost:3001/courses/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
-    if (!res.ok) throw new Error("Failed to delete!"); 
+    if (!res.ok) throw new Error('Failed to delete!');
 
-    setData(prev => prev.filter(c => c.courseId !== id));
+    setData((prev) => prev.filter((c) => c.courseId !== id));
     setSelectedId(null);
     setDeleteOpen(false);
-  }
+  };
 
   useEffect(() => {
     async function load() {
@@ -95,17 +90,17 @@ const Courses = () => {
 
         <CustomButton
           buttonText="Add Course"
-          className='bg-teal-600 rounded-sm'
+          className="bg-teal-600 rounded-sm"
           onClick={() => {
-            setIsEdit(false)
-            setDialogOpen(true)
+            setIsEdit(false);
+            setDialogOpen(true);
           }}
         />
 
         <CustomDialog
           isOpen={dialogOpen}
           setIsOpen={setDialogOpen}
-          dialogTitle={isEdit ? "Edit Course" : "Add Course"}
+          dialogTitle={isEdit ? 'Edit Course' : 'Add Course'}
           onSave={onSave}
           onClose={() => setCourse(['', '', '', ''])}
           fields={
@@ -114,9 +109,7 @@ const Courses = () => {
                 id={'courseName'}
                 label="Course Name"
                 value={course[0]}
-                onChange={(e) =>
-                  setCourse(prev => [e.target.value, prev[1], prev[2], prev[3]])
-                }
+                onChange={(e) => setCourse((prev) => [e.target.value, prev[1], prev[2], prev[3]])}
                 alerts={alert}
               />
               <CustomInput
@@ -124,9 +117,7 @@ const Courses = () => {
                 label="Department Id"
                 type="number"
                 value={course[1]}
-                onChange={(e) =>
-                  setCourse(prev => [prev[0], e.target.value, prev[2], prev[3]])
-                }
+                onChange={(e) => setCourse((prev) => [prev[0], e.target.value, prev[2], prev[3]])}
                 alerts={alert}
               />
               <div className="flex gap-5">
@@ -135,9 +126,7 @@ const Courses = () => {
                   label="Semester"
                   type="number"
                   value={course[2]}
-                  onChange={(e) =>
-                    setCourse(prev => [prev[0], prev[1], e.target.value, prev[3]])
-                  }
+                  onChange={(e) => setCourse((prev) => [prev[0], prev[1], e.target.value, prev[3]])}
                   alerts={alert}
                 />
                 <CustomInput
@@ -145,17 +134,14 @@ const Courses = () => {
                   label="Credit Hours"
                   type="number"
                   value={course[3]}
-                  onChange={(e) =>
-                    setCourse(prev => [prev[0], prev[1], prev[2], e.target.value])
-                  }
+                  onChange={(e) => setCourse((prev) => [prev[0], prev[1], prev[2], e.target.value])}
                   alerts={alert}
                 />
               </div>
             </div>
           }
         />
-        {
-          deleteOpen &&
+        {deleteOpen && (
           <CustomDialog
             isOpen={deleteOpen}
             setIsOpen={setDeleteOpen}
@@ -169,7 +155,7 @@ const Courses = () => {
               </>
             }
           />
-        }
+        )}
       </div>
 
       <div className="px-4">
@@ -189,10 +175,7 @@ const Courses = () => {
               ))}
               {data.length === 0 && (
                 <TableRow>
-                  <TableCell
-                    colSpan={4}
-                    className='text-center py-4 text-gray-500'
-                  >
+                  <TableCell colSpan={4} className="text-center py-4 text-gray-500">
                     No course added yet.
                   </TableCell>
                 </TableRow>
@@ -202,7 +185,7 @@ const Courses = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Courses
+export default Courses;

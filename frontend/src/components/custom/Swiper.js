@@ -1,4 +1,4 @@
-'use client'
+'use client';
 // import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,7 +27,9 @@ export default function Slider() {
             />
             <ApplyCard
               title={'Oreo Online'}
-              description={'Enroll now for Spring 2026 admissions and become a part of Pakistan’s top-ranked private sector university. Join us and shape your future today!'}
+              description={
+                'Enroll now for Spring 2026 admissions and become a part of Pakistan’s top-ranked private sector university. Join us and shape your future today!'
+              }
               className={'absolute left-30 top-35 w-[40%]'}
             />
           </div>
@@ -44,7 +46,9 @@ export default function Slider() {
             />
             <ApplyCard
               title={'Admissions Open for Spring 2026'}
-              description={'Enroll now for Spring 2026 admissions and become a part of Pakistan’s top-ranked private sector university. Join us and shape your future today!'}
+              description={
+                'Enroll now for Spring 2026 admissions and become a part of Pakistan’s top-ranked private sector university. Join us and shape your future today!'
+              }
               className={'absolute left-30 top-35 w-[40%]'}
             />
           </div>

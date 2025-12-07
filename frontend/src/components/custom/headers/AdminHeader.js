@@ -1,6 +1,6 @@
-import getDate from "@/services/getDate";
+import getDate from '@/services/getDate';
 
-const AdminHeader = () => { 
+const AdminHeader = () => {
   const date = getDate();
   return (
     <div className="flex justify-between items-center sticky top-0">
@@ -10,7 +10,7 @@ const AdminHeader = () => {
       </div>
       <p className="px-4 py-2 bg-white rounded-md text-gray-800">{date}</p>
     </div>
-  )
-}
+  );
+};
 
-export default AdminHeader
+export default AdminHeader;

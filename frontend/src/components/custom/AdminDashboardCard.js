@@ -1,4 +1,4 @@
-import { Card, CardContent } from "../ui/card"
+import { Card, CardContent } from '../ui/card';
 
 const AdminDashboardCard = ({ title, number, Icon }) => {
   return (
@@ -16,7 +16,7 @@ const AdminDashboardCard = ({ title, number, Icon }) => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default AdminDashboardCard
+export default AdminDashboardCard;

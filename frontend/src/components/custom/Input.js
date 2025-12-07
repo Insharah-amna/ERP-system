@@ -2,14 +2,14 @@ import { Input } from '../ui/input';
 
 const CustomInput = ({
   id,
-  label ='',
+  label = '',
   type = 'text',
   placeholder = '',
   value,
   onChange,
   defaultValue = '',
   className = '',
-  alerts = { show: false, msg: '' }
+  alerts = { show: false, msg: '' },
 }) => {
   return (
     <div className="flex flex-col gap-2">
@@ -27,11 +27,7 @@ const CustomInput = ({
         defaultValue={defaultValue}
       />
 
-      {
-        alerts.show && (
-          <p className="text-sm text-red-500 ml-1">{alerts.msg}</p>
-        )
-      }
+      {alerts.show && <p className="text-sm text-red-500 ml-1">{alerts.msg}</p>}
     </div>
   );
 };

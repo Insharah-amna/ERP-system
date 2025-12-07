@@ -1,24 +1,24 @@
-"use client";
-import { useState } from "react";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { AdminSidebar } from "@/components/custom/Sidebar";
+'use client';
+import { useState } from 'react';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { AdminSidebar } from '@/components/custom/Sidebar';
 
-import Home from "@/components/admin/Home";
-import Departments from "@/components/admin/Departments";
-import Courses from "@/components/admin/Courses";
-import Teachers from "@/components/admin/Teachers";
-import Students from "@/components/admin/Students";
-import AdminHeader from "@/components/custom/headers/AdminHeader";
+import Home from '@/components/admin/Home';
+import Departments from '@/components/admin/Departments';
+import Courses from '@/components/admin/Courses';
+import Teachers from '@/components/admin/Teachers';
+import Students from '@/components/admin/Students';
+import AdminHeader from '@/components/custom/headers/AdminHeader';
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState("Home");
+  const [activeTab, setActiveTab] = useState('Home');
 
   const components = {
     Home: Home,
     Departments: Departments,
     Courses: Courses,
     Teachers: Teachers,
-    Students: Students
+    Students: Students,
   };
 
   const ActiveComponent = components[activeTab];

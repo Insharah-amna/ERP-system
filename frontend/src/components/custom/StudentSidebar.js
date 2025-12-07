@@ -1,5 +1,5 @@
 'use client';
-import Link from "next/link"
+import Link from 'next/link';
 import {
   Sidebar,
   SidebarContent,
@@ -10,10 +10,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { studentSidebarMenuItems } from "@/constants/StudentSidebarMenu"
-import CustomButton from "./Button"
-import { logout } from "@/services/AuthService"
+} from '@/components/ui/sidebar';
+import { studentSidebarMenuItems } from '@/constants/StudentSidebarMenu';
+import CustomButton from './Button';
+import { logout } from '@/services/AuthService';
 
 export function StudentSidebar() {
   return (
@@ -47,5 +47,5 @@ export function StudentSidebar() {
         />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

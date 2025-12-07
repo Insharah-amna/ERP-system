@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 
-const CustomButton = ({ buttonText, className, type = 'button', onClick, variant='default' }) => {
+const CustomButton = ({ buttonText, className, type = 'button', onClick, variant = 'default' }) => {
   return (
     <Button
       className={`cursor-pointer ${className}`}
